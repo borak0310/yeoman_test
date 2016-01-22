@@ -1,0 +1,24 @@
+TEST GRID
+<div ng-controller="GridCtrl" class="demo-reponsiveTable clearfix">
+
+  <button class="btn btn-default" ng-click="removeFilters()">Remove filters</button>
+  <button class="btn btn-default" ng-click="addFilters()">Add filters</button>
+
+  <table ng-table="tableParams" class="table table-bordered table-striped">
+    <tr ng-repeat="user in $data">
+      <td title="'Full Name'" title-alt="'Name'" sortable="'name'" filter="name">
+        {{user.name}}
+      </td>
+      <td title="'Age'" sortable="'age'" filter="age">
+        {{user.age}}
+      </td>
+    </tr>
+  </table>
+
+  <table ng-table="tableParams" class="table table-condensed table-bordered table-striped">
+    <tr ng-repeat="row in $data">
+      <td data-title="'Name'" filter="{name: 'text'}">{{row.name}}</td>
+      <td data-title="'Age'" filter="{age: 'number'}">{{row.age}}</td>
+    </tr>
+  </table>
+</div>
