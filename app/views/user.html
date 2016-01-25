@@ -1,21 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-USER
+<div ng-controller="UserCtrl" class="row">
+  <h1>USER</h1>
+  <h4>angularJS call service example</h4>
 
-<form role="form" ng-submit="searchUser()">
+  <hr>
   <div class="row">
-    <div class="input-group">
-        <span class="input-group-btn">
-          <input type="submit" class="btn btn-primary" value="Search">
-        </span>
+    <div class="col-lg-11">
+      {{userTest}}
     </div>
   </div>
-</form>
 
-</body>
-</html>
+  <br>
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <input type="button" ng-click="searchUser()" class="btn btn-primary" value="Search">
+    </span>
+  </div>
+
+  <hr>
+
+  <h2>Restrict E 範例</h2>
+  <yomandirect></yomandirect>
+
+  <hr>
+  <hr>
+
+  <h2>Restrict A 範例</h2>
+  <h4>星星大於3時以綠色字體顯示 否則, 紅色字體顯示 </h4>
+  <hr>
+
+  <div ng-repeat="user in users">
+    <!-- user=rating  , username 對應到 yodirective.js 的  user-rating scope -->
+    <div>Name: <span user-rating="user.userRating" username="user.username"></span></div>
+    <h3>Active Rating</h3>
+
+    <!--  rating-value="user.userRating" 對應到l初始頁面星數 -->
+    <div fundoo-rating rating-value="user.userRating" max="5"></div>
+
+    <h3>ReadOnly Rating</h3>
+
+    <div fundoo-rating rating-value="user.userRating" max="5" readonly="true"></div>
+    <hr>
+  </div>
+
+</div>
+<style>
+  /*預設 - 灰星星*/
+  .rating {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul.rating {
+    display: inline-block;
+  }
+
+  .rating li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /*藍星星*/
+  .rating .filled {
+    color: #21568b;
+  }
+
+  .positive {
+    color: green;
+  }
+
+  .negative {
+    color: red;
+  }
+</style>

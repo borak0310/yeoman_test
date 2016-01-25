@@ -53,6 +53,10 @@ angular
         templateUrl: 'views/grid.html',
         controller: 'GridCtrl'
       })
+      .when('/filter', {
+        templateUrl: 'views/filter.html',
+        controller: 'FilterctrlCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
