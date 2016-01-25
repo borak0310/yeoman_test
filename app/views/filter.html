@@ -1,3 +1,12 @@
 <div ng-controller="FilterctrlCtrl">
-  <pre>{{ obj | json }}</pre>
+  <h1>ORG:</h1>
+  <pre>{{ objs | json }}</pre>
+
+  <h1>Filter: </h1>
+  請輸入姓名當查詢條件: <input ng-model="greeting" type="text">
+  <br>
+  <br>
+  <!--filter : {name:greeting}  , 表示只有把 objs 的 name 欄位當條件-->
+  <!--如果寫成 filter :  greeting}  ,則表示是查 JSON 內容所有的欄位 -->
+  <pre ng-repeat="x in objs | filter : {name:greeting}">{{x | json}}</pre>
 </div>

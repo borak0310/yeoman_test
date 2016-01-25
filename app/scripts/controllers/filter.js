@@ -8,17 +8,22 @@
  * Controller of the yeomanTestApp
  */
 angular.module('yeomanTestApp')
-  .controller('FilterctrlCtrl', function ($scope) {
-    $scope.obj = [{
-      name: 'Lewis',
-      age: 18,
-      hobbies: [ 'eat', 'sleep']
-    },
-    {
-      name: 'Alex',
-      age: 18,
-      hobbies: [ 'work']
-    }];
-
-
-  });
+  .controller('FilterctrlCtrl', ['$scope', function ($scope) {
+    $scope.objs = [
+      {
+        name: 'Lewis',
+        age: 18,
+        hobbies: ['eat', 'sleep']
+      },
+      {
+        name: 'Alex',
+        age: 18,
+        hobbies: ['work']
+      },
+      {
+        name: 'Pogi',
+        age: 40,
+        hobbies: ['work']
+      }];
+  }
+  ]);
