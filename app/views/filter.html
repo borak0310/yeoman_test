@@ -1,12 +1,27 @@
 <div ng-controller="FilterctrlCtrl">
+
+  <!-- 以 module 的方式實作 filter -->
+  {{ 25 | yofilter }}
+  <br>
+  <!-- 進階版 -->
+  <p>過濾出小於40歲的人 Filter:</p>
+  <ul class="list">
+    <li ng-repeat="obj in objs | filterage">{{obj.name}}</li>
+  </ul>
+
   <h1>ORG:</h1>
   <pre>{{ objs | json }}</pre>
 
   <h1>Filter: </h1>
-  請輸入姓名當查詢條件: <input ng-model="greeting" type="text">
+  <div class="row">
+    <div class="col-lg-2">姓名:</div>
+    <input class="col-lg-2" ng-model="greeting" type="text">
+    <div class="col-lg-2"> 年齡:</div>
+    <input class="col-lg-2" ng-model="searchAge" type="text">
+  </div>
   <br>
   <br>
   <!--filter : {name:greeting}  , 表示只有把 objs 的 name 欄位當條件-->
   <!--如果寫成 filter :  greeting}  ,則表示是查 JSON 內容所有的欄位 -->
-  <pre ng-repeat="x in objs | filter : {name:greeting}">{{x | json}}</pre>
+  <pre ng-repeat="x in objs | filter : {name:greeting}|filter:{age:searchAge}">{{x | json}}</pre>
 </div>
