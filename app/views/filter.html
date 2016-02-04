@@ -4,18 +4,37 @@
   {{ 25 | yofilter }}
   <br>
   <!-- 進階版 -->
-  <p>過濾出小於40歲的人 Filter:</p>
-  <ul class="list">
-    <li ng-repeat="obj in objs | filterage">{{obj.name}}</li>
-  </ul>
+  <p>Filter:</p>
+
+
+  <div class="row form-group">
+    <label class="col-lg-1 control-label" for="selectfilter">Type</label>
+    <select class="col-lg-2" id="selectfilter" name="selectfilter" ng-model="searchDataFilter.selectfilter">
+      <option value="all">ALL</option>
+      <option value="selUserName">NAME</option>
+      <option value="selAge">AGE</option>
+    </select>
+  </div>
+  <div class="row form-group">
+    <label class="col-lg-1 control-label" for="filterText">Text</label>
+    <input class="col-lg-2" id="filterText" ng-model="searchDataFilter.filterText" type="text">
+  </div>
+  <br>
+  <div class="row">
+    <ul>
+      <li ng-repeat="obj in objs | filterage:{selectfilter:searchDataFilter.selectfilter,filterText:searchDataFilter.filterText}">{{obj.name}}</li>
+    </ul>
+  </div>
 
   <h1>ORG:</h1>
   <pre>{{ objs | json }}</pre>
 
   <h1>Filter: </h1>
+
   <div class="row">
     <div class="col-lg-2">姓名:</div>
     <input class="col-lg-2" ng-model="greeting" type="text">
+
     <div class="col-lg-2"> 年齡:</div>
     <input class="col-lg-2" ng-model="searchAge" type="text">
   </div>

@@ -9,6 +9,7 @@
  */
 angular.module('yeomanTestApp')
   .controller('FilterctrlCtrl', ['$scope', function ($scope) {
+    $scope.searchDataFilter = {selectFilter:"",filterText:""};
     $scope.objs = [
       {
         name: 'Lewis',

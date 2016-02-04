@@ -31,11 +31,21 @@ angular.module('yeomanTestApp')
     };
   })
   .filter('filterage', function () {
-    return function (input) {
+    return function (input,keyObj) {
+      console.log(keyObj.selectfilter);
       var out = [];
       angular.forEach(input, function (obj) {
-        if (obj.age < 40) {
+
+        console.log(obj.name == keyObj.filterText ||  obj.age == keyObj.filterTex);
+        if(keyObj.selectfilter == 'selUserName' && obj.name == keyObj.filterText){
+          console.log('search name');
           out.push(obj)
+        }else if(keyObj.selectfilter == 'selAge' && obj.age == keyObj.filterText){
+          console.log('search age');
+          out.push(obj);
+        }else if(keyObj.selectfilter == "all" ){
+          console.log('search all');
+          out.push(obj);
         }
       })
       return out;

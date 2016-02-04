@@ -57,6 +57,10 @@ angular
         templateUrl: 'views/filter.html',
         controller: 'FilterctrlCtrl'
       })
+      .when('/serverSideGrid', {
+        templateUrl: 'views/serversidegrid.html',
+        controller: 'ServersidegridCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

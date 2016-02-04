@@ -1,0 +1,70 @@
+<style>
+  body {
+    padding: 10px !important;
+  }
+
+  .loading-container {
+    position: relative;
+  }
+
+  .loading-container .loading:before, .loading-container .loading:after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 50px;
+    min-width: 50px;
+  }
+
+  .loading-container .loading:before {
+    background-color: white;
+    opacity: 0.5;
+  }
+</style>
+
+<div ng-controller="ServersidegridCtrl" class="row">
+
+  <h4>ngTable Grid server-side example</h4>
+  <h3>use lazy load</h3>
+
+  <div class="input-group">
+    <span>
+      <input type="button" ng-click="clickGridData()" class="btn btn-primary" value="Load Data">
+    </span>
+    <span>
+      <input type="button" ng-click="clickClearData()" class="btn btn-primary" value="Clear">
+    </span>
+  </div>
+
+  <br>
+
+  <div loading-container="tableParams.settings().$loading">
+    <!-- show-filter = true 是顯示濾條件 -->
+    <table ng-table="tableParams" show-filter="true" class="table">
+      <tbody>
+      <tr ng-repeat="hotel in $data">
+        <td data-title="'No'">
+          {{hotel.no}}
+        </td>
+        <td data-title="'Name'" filter="{ 'Name': 'text' }" sortable="'name'">
+          {{hotel.name}}
+        </td>
+        <td data-title="'Phone'" filter="{ 'Phone': 'text' }" sortable="'tel'">
+          {{hotel.tel}}
+        </td>
+        <td data-title="'Button_price'">
+          {{hotel.button_price}}
+        </td>
+        <td data-title="'Higher_price'">
+          {{hotel.higher_price}}
+        </td>
+        <td data-title="'Room'">
+          {{hotel.room}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
