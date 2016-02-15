@@ -8,10 +8,13 @@
  * Controller of the yeomanTestApp
  */
 angular.module('yeomanTestApp')
-  .controller('ServersidegridCtrl', function ($scope,$filter, apiFactory, ngTableParams) {
+  .controller('ServersidegridCtrl', function ($scope,$filter, apiFactory, apiFactory2, ngTableParams) {
 
     //初始控制資料內容
     $scope.tableParams = new ngTableParams();
+
+    //初始控制資料內容 測試呼叫 SERVER RESTFUL
+    $scope.tableParams2 = new ngTableParams();
 
     //清除資料
     $scope.clickClearData = function () {
@@ -69,6 +72,33 @@ angular.module('yeomanTestApp')
         }
       });
     }
+
+
+    //取得資料 2
+    $scope.clickGridData2 = function () {
+      console.log('clickGridData2');
+      $scope.tableParams2 = new ngTableParams({
+        page: 1,            // show first page
+        count: 10,          // count per page
+        sorting: {
+          name: 'asc'     // initial sorting
+        }
+      }, {
+        total: 0,           // length of data
+        getData: function ($defer, params) {
+          apiFactory2.apiFactorySearch((params.page() - 1) * params.count(), params.count(), params.filter(), params.sorting())
+            .success(function (result) {
+              console.log('result .. ');
+              console.log('params.filter()' + params.filter());
+
+              //後端傳回來時先計算好的總數
+              params.total(result.length);
+
+              $defer.resolve(result);
+            });
+        }
+      });
+    }
   })
 
   //NG TABLE LOADING CSS畫面
@@ -106,4 +136,23 @@ angular.module('yeomanTestApp')
         return $http.get('/resource/jsondata.json', JSON.stringify(param));
       }
     }
+  })
+
+  .factory('apiFactory2', function ($http) {
+    return {
+      apiFactorySearch: function (firstResult, itemsPerPage, filterByFields, orderBy) {
+        var param = {
+          "firstResult": firstResult,
+          "itemsPerPage": itemsPerPage,
+          "filterByFields": filterByFields,
+          "orderBy": orderBy
+        };
+        //return $http.post('rest/members/filter', JSON.stringify(param));
+        //return $http.get('http://data.ntpc.gov.tw/api/v1/rest/datastore/382000000A-000338-001', JSON.stringify(param));
+        console.log('return resultJson .. ');
+        return $http.get('http://localhost:8080/restful-server/greeting', JSON.stringify(param));
+      }
+    }
   });
+
+

@@ -36,6 +36,9 @@
     <span>
       <input type="button" ng-click="clickClearData()" class="btn btn-primary" value="Clear">
     </span>
+    <span>
+      <input type="button" ng-click="clickGridData2()" class="btn btn-primary" value="Load Data 2">
+    </span>
   </div>
 
   <br>
@@ -67,4 +70,23 @@
       </tbody>
     </table>
   </div>
+
+  <h4>ngTable 2 Grid server-side from other server uri example</h4>
+
+  <div loading-container="tableParams2.settings().$loading">
+    <!-- show-filter = true 是顯示濾條件 -->
+    <table ng-table="tableParams2" show-filter="false" class="table">
+      <tbody>
+        <tr ng-repeat="greeting in $data">
+          <td data-title="'id'">
+            {{greeting.id}}
+          </td>
+          <td data-title="'content'">
+            {{greeting.content}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
