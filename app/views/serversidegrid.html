@@ -36,9 +36,6 @@
     <span>
       <input type="button" ng-click="clickClearData()" class="btn btn-primary" value="Clear">
     </span>
-    <span>
-      <input type="button" ng-click="clickGridData2()" class="btn btn-primary" value="Load Data 2">
-    </span>
   </div>
 
   <br>
@@ -69,24 +66,44 @@
       </tr>
       </tbody>
     </table>
+    <pre>Total DATA: {{tableParams.settings().total}}</pre>
   </div>
 
-  <h4>ngTable 2 Grid server-side from other server uri example</h4>
+  <h4>ngTable server side example - get store list from som </h4>
+
+  <div class="input-group">
+    <span>
+      <input type="button" ng-click="clickGridData2()" class="btn btn-primary" value="Load Data 2">
+    </span>
+  </div>
 
   <div loading-container="tableParams2.settings().$loading">
     <!-- show-filter = true 是顯示濾條件 -->
     <table ng-table="tableParams2" show-filter="false" class="table">
       <tbody>
-        <tr ng-repeat="greeting in $data">
+        <tr ng-repeat="storelist in $data">
           <td data-title="'id'">
-            {{greeting.id}}
+            {{storelist.storeId}}
           </td>
           <td data-title="'content'">
-            {{greeting.content}}
+            {{storelist.storeName}}
+          </td>
+          <td data-title="'storeAddr'">
+            {{storelist.storeAddr}}
+          </td>
+          <td data-title="'storeTel'">
+            {{storelist.storeTel}}
+          </td>
+          <td data-title="'storeFax'">
+            {{storelist.storeFax}}
+          </td>
+          <td data-title="'storeFax'">
+            {{storelist.storeFax}}
           </td>
         </tr>
       </tbody>
     </table>
+    <pre>Total DATA: {{tableParams2.settings().total}}</pre>
   </div>
 
 </div>

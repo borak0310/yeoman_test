@@ -92,9 +92,9 @@ angular.module('yeomanTestApp')
               console.log('params.filter()' + params.filter());
 
               //後端傳回來時先計算好的總數
-              params.total(result.length);
+              params.total(result.total);
 
-              $defer.resolve(result);
+              $defer.resolve(result.result);
             });
         }
       });
@@ -150,7 +150,7 @@ angular.module('yeomanTestApp')
         //return $http.post('rest/members/filter', JSON.stringify(param));
         //return $http.get('http://data.ntpc.gov.tw/api/v1/rest/datastore/382000000A-000338-001', JSON.stringify(param));
         console.log('return resultJson .. ');
-        return $http.get('http://localhost:8080/restful-server/greeting', JSON.stringify(param));
+        return $http.post('http://localhost:8080/restful-server/getStoreList', JSON.stringify(param));
       }
     }
   });
