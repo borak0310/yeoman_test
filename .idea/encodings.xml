@@ -16,6 +16,7 @@
     <file url="file://$PROJECT_DIR$/app/scripts/services/userservice.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/styles/main.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/contact.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/error.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/filter.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/grid.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/main.html" charset="UTF-8" />

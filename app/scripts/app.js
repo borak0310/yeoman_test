@@ -61,6 +61,10 @@ angular
         templateUrl: 'views/serversidegrid.html',
         controller: 'ServersidegridCtrl'
       })
+      .when('/error', {
+        templateUrl: 'views/error.html',
+        controller: 'ErrorCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
