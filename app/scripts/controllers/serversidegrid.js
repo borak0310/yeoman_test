@@ -99,6 +99,7 @@ angular.module('yeomanTestApp')
           name: 'asc'     // initial sorting
         }
       }, {
+        counts: [], // hide page counts control
         total: 0,           // length of data
         getData: function ($defer, params) {
           apiFactory2.apiFactorySearch((params.page() - 1) * params.count(), params.count(), $scope.filters, params.sorting())
