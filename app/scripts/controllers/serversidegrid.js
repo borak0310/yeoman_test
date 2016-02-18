@@ -18,7 +18,8 @@ angular.module('yeomanTestApp')
 
     //資料查詢條件
     $scope.filters = {
-      serachStoreId: ''
+      serachStoreId: '',
+      serachStoreName: ''
     };
 
     //清除資料
@@ -29,6 +30,10 @@ angular.module('yeomanTestApp')
     //清除資料
     $scope.clickClearData2 = function () {
       $scope.tableParams2 = new ngTableParams();
+      $scope.filters = {
+        serachStoreId: '',
+        serachStoreName: ''
+      };
     }
 
     //取得資料
