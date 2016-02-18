@@ -8,7 +8,7 @@
  * Controller of the yeomanTestApp
  */
 angular.module('yeomanTestApp')
-  .controller('ServersidegridCtrl', function ($scope,$filter, apiFactory, apiFactory2, ngTableParams) {
+  .controller('ServersidegridCtrl', function ($scope,$filter,$location, apiFactory, apiFactory2, ngTableParams) {
 
     //初始控制資料內容
     $scope.tableParams = new ngTableParams();
@@ -16,9 +16,19 @@ angular.module('yeomanTestApp')
     //初始控制資料內容 測試呼叫 SERVER RESTFUL
     $scope.tableParams2 = new ngTableParams();
 
+    //資料查詢條件
+    $scope.filters = {
+      serachStoreId: ''
+    };
+
     //清除資料
     $scope.clickClearData = function () {
       $scope.tableParams = new ngTableParams();
+    }
+
+    //清除資料
+    $scope.clickClearData2 = function () {
+      $scope.tableParams2 = new ngTableParams();
     }
 
     //取得資料
@@ -86,15 +96,15 @@ angular.module('yeomanTestApp')
       }, {
         total: 0,           // length of data
         getData: function ($defer, params) {
-          apiFactory2.apiFactorySearch((params.page() - 1) * params.count(), params.count(), params.filter(), params.sorting())
+          apiFactory2.apiFactorySearch((params.page() - 1) * params.count(), params.count(), $scope.filters, params.sorting())
             .success(function (result) {
               console.log('result .. ');
               console.log('params.filter()' + params.filter());
-
               //後端傳回來時先計算好的總數
               params.total(result.total);
-
               $defer.resolve(result.result);
+            }).error(function (data, status, headers, config) {
+              $location.url('/error');
             });
         }
       });

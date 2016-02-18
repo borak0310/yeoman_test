@@ -27,6 +27,7 @@
 <div ng-controller="ServersidegridCtrl" class="row">
 
   <h4>ngTable Grid server-side example</h4>
+
   <h3>use lazy load</h3>
 
   <div class="input-group">
@@ -71,39 +72,57 @@
 
   <h4>ngTable server side example - get store list from som </h4>
 
-  <div class="input-group">
-    <span>
-      <input type="text" ng-model="searchStoreId" class="btn btn-primary" value="00700">
-    </span>
-    <span>
-      <input type="button" ng-click="clickGridData2()" class="btn btn-primary" value="Load Data 2">
-    </span>
-  </div>
 
   <div loading-container="tableParams2.settings().$loading">
+
+    <form novalidate ng-submit="clickGridData2()">
+      <div class="bs-callout bs-callout-info col-xs-12">
+        <div class="row">
+          <div class="col-xs-12">
+            <h4>查詢條件</h4>
+            <hr/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2">
+            店別:
+          </div>
+          <div class="col-xs-3">
+            <input type="text" class="form-control" ng-model="filters.serachStoreId">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5">
+            <input type="submit" class="btn btn-primary" value="Load Data 2">
+            <input type="button" class="btn btn-primary" ng-click="clickClearData2()" value="Reset">
+          </div>
+        </div>
+      </div>
+    </form>
+
     <!-- show-filter = true 是顯示濾條件 -->
     <table ng-table="tableParams2" show-filter="false" class="table">
       <tbody>
-        <tr ng-repeat="storelist in $data">
-          <td data-title="'店號'">
-            {{storelist.storeId}}
-          </td>
-          <td data-title="'店名'">
-            {{storelist.storeName}}
-          </td>
-          <td data-title="'地址'">
-            {{storelist.storeAddr}}
-          </td>
-          <td data-title="'電話'">
-            {{storelist.storeTel}}
-          </td>
-          <td data-title="'傳真'">
-            {{storelist.storeFax}}
-          </td>
-          <td data-title="'狀態'">
-            {{storelist.status}}
-          </td>
-        </tr>
+      <tr ng-repeat="storelist in $data">
+        <td data-title="'店號'">
+          {{storelist.storeId}}
+        </td>
+        <td data-title="'店名'">
+          {{storelist.storeName}}
+        </td>
+        <td data-title="'地址'">
+          {{storelist.storeAddr}}
+        </td>
+        <td data-title="'電話'">
+          {{storelist.storeTel}}
+        </td>
+        <td data-title="'傳真'">
+          {{storelist.storeFax}}
+        </td>
+        <td data-title="'狀態'">
+          {{storelist.status}}
+        </td>
+      </tr>
       </tbody>
     </table>
     <pre>Total DATA: {{tableParams2.settings().total}}</pre>
