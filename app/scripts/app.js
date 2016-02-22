@@ -65,6 +65,10 @@ angular
         templateUrl: 'views/error.html',
         controller: 'ErrorCtrl'
       })
+      .when('/storeDtl/:input', {
+        templateUrl: 'views/storedtl.html',
+        controller: 'StoredtlCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

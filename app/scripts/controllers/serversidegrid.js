@@ -115,6 +115,13 @@ angular.module('yeomanTestApp')
         }
       });
     }
+
+    //取連至明細頁面
+    $scope.showStoreDtl=function(storeId) {
+      //$scope.go("storeDtl", {storeId: storeId});
+      $location.url('/storeDtl/' + storeId);
+    }
+
   })
 
   //NG TABLE LOADING CSS畫面

@@ -110,8 +110,9 @@
     <!-- show-filter = true 是顯示濾條件 -->
     <table ng-table="tableParams2" show-filter="false" class="table">
       <tbody>
-      <tr ng-repeat="storelist in $data">
+      <tr ng-repeat="storelist in $data" ng-click="showStoreDtl('{{storelist.storeId}}')">
         <td data-title="'店號'">
+          <!--<a ng-href="#/storeDtl/{{storelist.storeId}}">{{storelist.storeId}}</a>-->
           {{storelist.storeId}}
         </td>
         <td data-title="'店名'">

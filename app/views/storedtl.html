@@ -1,0 +1,28 @@
+<style>
+  .panel-body div{
+    margin: 0 0 25px;
+  }
+</style>
+<div ng-controller="StoredtlCtrl" class="row">
+  <div class=" panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">門店資訊</h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-xs-2">門店:</div>
+      <div class="col-xs-10">{{storeDtl.storeId}} - {{storeDtl.storeName}}</div>
+      <div class="col-xs-2">地址:</div>
+      <div class="col-xs-10">{{storeDtl.storeAddr}} &nbsp;</div>
+      <div class="col-xs-2">電話:</div>
+      <div class="col-xs-10">{{storeDtl.storeTel}} &nbsp;</div>
+      <div class="col-xs-2">傳真:</div>
+      <div class="col-xs-10">{{storeDtl.storeFax}} &nbsp;</div>
+      <div class="col-xs-2">統一編號:</div>
+      <div class="col-xs-10">{{storeDtl.companyId}} &nbsp;</div>
+      <div class="col-xs-2">開店日期:</div>
+      <div class="col-xs-10">{{storeDtl.createDate | date: 'yyyy-MM-dd'}} &nbsp;</div>
+      <div class="col-xs-2">狀態:</div>
+      <div class="col-xs-10">{{storeDtl.status}} &nbsp;</div>
+    </div>
+  </div>
+</div>
